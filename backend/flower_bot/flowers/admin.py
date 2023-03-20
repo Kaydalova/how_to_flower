@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Flower, UsersFlower
+from .models import Flower, UsersFlower, Schedule
 
 
 @admin.register(Flower)
@@ -11,7 +11,10 @@ class FlowerAdmin(admin.ModelAdmin):
         'type',
         'temperature',
         'light',
-        'watering'
+        'watering',
+        'watering_int',
+        'feeding_int',
+        'pot'
     )
 
 
@@ -22,4 +25,15 @@ class UsersFlowerAdmin(admin.ModelAdmin):
         'owner',
         'name',
         'flower'
+    )
+
+
+@admin.register(Schedule)
+class ScheduleAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'flower',
+        'day',
+        'time',
+        'action'
     )

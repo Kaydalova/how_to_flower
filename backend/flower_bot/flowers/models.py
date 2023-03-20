@@ -17,7 +17,16 @@ class Flower(models.Model):
         verbose_name='Световой режим',
         max_length=1000)
     watering = models.CharField(
-        verbose_name='Режим полива',
+        verbose_name='Режим полива, подкормки и опрыскивания',
+        max_length=1000)
+    watering_int = models.SmallIntegerField(
+        verbose_name='Частота полива для бота')
+    sprinkle_int = models.SmallIntegerField(
+        verbose_name='Частота опрыскиваний для бота')
+    feeding_int = models.SmallIntegerField(
+        verbose_name='Подкормка для бота, номер месяца')
+    pot = models.CharField(
+        verbose_name='Горшочек',
         max_length=1000)
 
     class Meta:
@@ -47,6 +56,9 @@ class UsersFlower(models.Model):
         null=True,
         default=None,
         verbose_name='Фотография цветочка')
+    chat_id = models.CharField(
+        max_length=9,
+        verbose_name='Телеграм chat id')
 
     class Meta:
         ordering = ('name',)
@@ -55,3 +67,30 @@ class UsersFlower(models.Model):
 
     def __str__(self):
         return self.name
+
+# каждый день из бд достает все записи модели скедьюл,
+# в которых день недели совпадает с текущим.
+# Для каждого события из всех событий производит отправку месседжа
+# с указанным фловер неймом указанному юзеру(фловер оунеру)
+# в тг в указанное время
+
+
+class Schedule(models.Model):
+    flower = models.ForeignKey(
+        UsersFlower,
+        on_delete=models.CASCADE,
+        verbose_name='Цветочек')
+    day = models.SmallIntegerField(
+        verbose_name='День недели от 0 до 6')
+    time = models.TimeField(
+        verbose_name='Время полива')
+    action = models.SmallIntegerField(
+        verbose_name='1 - полить, 0 - побрызгать, 2 - подкормить')
+
+    class Meta:
+        ordering = ('day',)
+        verbose_name = 'Расписание'
+        verbose_name_plural = 'Расписания'
+
+    def __str__(self):
+        return self.flower
