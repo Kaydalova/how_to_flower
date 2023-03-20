@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Flower, UsersFlower, Schedule
+
+from .models import Flower, Schedule, UsersFlower
 
 
 @admin.register(Flower)
