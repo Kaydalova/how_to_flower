@@ -40,7 +40,7 @@ class UsersFlowerSerializer(serializers.ModelSerializer):
     image = Base64ImageField(use_url=True, max_length=None)
     owner = serializers.PrimaryKeyRelatedField(
         read_only=True, default=serializers.CurrentUserDefault())
-    
+
     class Meta:
         model = UsersFlower
         fields = (

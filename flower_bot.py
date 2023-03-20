@@ -1,5 +1,5 @@
 from telegram import Bot
-from telegram.ext import CommandHandler, Filters, MessageHandler, Updater
+from telegram.ext import CommandHandler, Updater
 from telegram import ReplyKeyboardMarkup
 import os
 
@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# Создаем экземпляр класса Bot для отправки сообщений пользователю 
+# Создаем экземпляр класса Bot для отправки сообщений пользователю
 secret_token = os.getenv('TOKEN')
 bot = Bot(token=secret_token)
 chat_id = os.getenv('CHAT_ID')
@@ -34,9 +34,8 @@ def start(update, context):
     name = update.message.chat.first_name
     text = f'Привет, {name}! Я помогу тебе заботиться о твоих цветах!'
     buttons = ReplyKeyboardMarkup([
-                ['Добавить цветок', 'Мои цветы'],
-                ['Выбрать цветок']],
-                resize_keyboard=True)
+        ['Добавить цветок', 'Мои цветы'],
+        ['Выбрать цветок']], resize_keyboard=True)
     context.bot.send_message(
         chat_id=chat.id,
         text=text,
@@ -45,7 +44,7 @@ def start(update, context):
 
 def add_flower(update, context):
     """
-    Функция принимает на вход: 
+    Функция принимает на вход:
     update - обновление, которое пришло с сервера
     (в этом объекте есть информация о чате, входящее сообщение),
     context - информация о боте и другая опциональная.
@@ -92,9 +91,9 @@ updater.dispatcher.add_handler(CommandHandler('start', start))
 # Регистрируется обработчик MessageHandler;
 # из всех полученных сообщений он будет выбирать только текстовые сообщения
 # и передавать их в функцию say_hi()
-updater.dispatcher.add_handler(MessageHandler(Filters.text, say_hi))
 
-# Метод start_polling() запускает процесс polling, 
+
+# Метод start_polling() запускает процесс polling,
 # приложение начнёт отправлять регулярные запросы для получения обновлений.
 updater.start_polling()
 # Бот будет работать до тех пор, пока не нажмете Ctrl-C

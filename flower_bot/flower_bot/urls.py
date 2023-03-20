@@ -21,16 +21,15 @@ from django.conf.urls import url
 from rest_framework import permissions
 
 schema_view = get_schema_view(
-   openapi.Info(
-      title="Flowers API",
-      default_version='v1',
-      description="Документация для проекта 'How to flower'",
-      contact=openapi.Contact(email="alexandrakaydalova@yandex.ru"),
-      license=openapi.License(name="BSD License"),
-   ),
-   public=True,
-   permission_classes=(permissions.AllowAny,),
-)
+    openapi.Info(
+        title="Flowers API",
+        default_version='v1',
+        description="Документация для проекта 'How to flower'",
+        contact=openapi.Contact(email="alexandrakaydalova@yandex.ru"),
+        license=openapi.License(name="BSD License"),),
+    public=True,
+    permission_classes=(permissions.AllowAny,),)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
