@@ -1,11 +1,7 @@
 name: How to flower workflow
 
 # Controls when the workflow will run
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+on: [push]
 
 
 jobs:
