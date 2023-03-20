@@ -56,9 +56,8 @@ class UsersFlower(models.Model):
         null=True,
         default=None,
         verbose_name='Фотография цветочка')
-    chat_id = models.CharField(
-        max_length=9,
-        verbose_name='Телеграм chat id')
+    notification = models.BooleanField(
+        verbose_name='Оповещения в теоеграм')
 
     class Meta:
         ordering = ('name',)

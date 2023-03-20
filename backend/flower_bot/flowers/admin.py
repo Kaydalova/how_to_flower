@@ -24,7 +24,8 @@ class UsersFlowerAdmin(admin.ModelAdmin):
         'id',
         'owner',
         'name',
-        'flower'
+        'flower',
+        'notification'
     )
 
 
