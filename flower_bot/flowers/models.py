@@ -15,7 +15,7 @@ class Flower(models.Model):
         verbose_name='Оптимальная температура',
         max_length=100)
     light = models.CharField(
-        verbose_name='Световой режим',
+        verbose_name='Освещенность',
         max_length=1000)
     watering = models.CharField(
         verbose_name='Режим полива, подкормки и опрыскивания',
@@ -90,7 +90,7 @@ class Schedule(models.Model):
     class Meta:
         ordering = ('day',)
         verbose_name = 'Расписание'
-        verbose_name_plural = 'Расписания'
+        verbose_name_plural = 'Расписание'
 
     def __str__(self):
         return self.flower

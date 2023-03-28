@@ -13,6 +13,7 @@ class FlowerAdmin(admin.ModelAdmin):
         'light',
         'watering',
         'watering_int',
+        'sprinkle_int',
         'feeding_int',
         'pot'
     )
