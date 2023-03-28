@@ -20,3 +20,5 @@ Bot that helps you take care of you flowers
 3.  In the folder with manage.py run:
 
         python manage.py runserver
+
+## todo
