@@ -13,7 +13,7 @@ class Flower(models.Model):
         max_length=400)
     temperature = models.CharField(
         verbose_name='Оптимальная температура',
-        max_length=100)
+        max_length=1000)
     light = models.CharField(
         verbose_name='Освещенность',
         max_length=1000)
@@ -58,7 +58,7 @@ class UsersFlower(models.Model):
         default=None,
         verbose_name='Фотография цветочка')
     notification = models.BooleanField(
-        verbose_name='Оповещения в теоеграм')
+        verbose_name='Оповещения в телеграм')
 
     class Meta:
         ordering = ('name',)

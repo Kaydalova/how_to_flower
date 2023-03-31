@@ -14,7 +14,7 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ('email', 'id',
                   'username', 'first_name',
-                  'last_name')
+                  'last_name', 'chat_id')
 
 
 class FlowerSerializer(serializers.ModelSerializer):
@@ -49,13 +49,10 @@ class UsersFlowerSerializer(serializers.ModelSerializer):
             'name',
             'owner',
             'image',
+            'notification',
         )
 
     def validate(self, data):
-        """
-        Метод проверяет наличие и корректность тэгов,
-        ингредиентов, времени приготовления.
-        """
         flower = get_object_or_404(
             Flower,
             id=self.initial_data.get('flower'))
