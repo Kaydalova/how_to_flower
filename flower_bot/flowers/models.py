@@ -11,6 +11,11 @@ class Flower(models.Model):
     type = models.CharField(
         verbose_name='Тип растения',
         max_length=400)
+    image = models.ImageField(
+        upload_to='flowers/images/',
+        null=True,
+        default=None,
+        verbose_name='Фотография растения')
     temperature = models.CharField(
         verbose_name='Оптимальная температура',
         max_length=1000)

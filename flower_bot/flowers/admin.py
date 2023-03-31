@@ -8,6 +8,7 @@ class FlowerAdmin(admin.ModelAdmin):
     list_display = (
         'id',
         'name',
+        'image',
         'type',
         'temperature',
         'light',
