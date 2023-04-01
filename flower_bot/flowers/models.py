@@ -25,6 +25,9 @@ class Flower(models.Model):
     watering = models.CharField(
         verbose_name='Режим полива, подкормки и опрыскивания',
         max_length=1000)
+    pat_friendly = models.CharField(
+        verbose_name='Пэт-френдли',
+        max_length=1000)
     watering_int = models.SmallIntegerField(
         verbose_name='Частота полива для бота')
     sprinkle_int = models.SmallIntegerField(
