@@ -66,7 +66,8 @@ class UsersFlower(models.Model):
         default=None,
         verbose_name='Фотография цветочка')
     notification = models.BooleanField(
-        verbose_name='Оповещения в телеграм')
+        verbose_name='Оповещения в телеграм',
+        default=False)
 
     class Meta:
         ordering = ('name',)
