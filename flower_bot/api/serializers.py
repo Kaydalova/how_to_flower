@@ -29,6 +29,11 @@ class FlowerSerializer(serializers.ModelSerializer):
                   'temperature',
                   'light',
                   'watering'
+                  'pat_friendly',
+                  'pot',
+                  'watering_int',
+                  'sprinkle_int',
+                  'feeding_int',
                   )
 
 
