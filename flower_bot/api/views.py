@@ -1,11 +1,11 @@
+from django.shortcuts import get_object_or_404
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
 
-from .serializers import (FlowerSerializer,
-                          UsersFlowerSerializer,
-                          ScheduleSerializer)
-from flowers.models import Flower, UsersFlower, Schedule
-from django_filters.rest_framework import DjangoFilterBackend
-from django.shortcuts import get_object_or_404
+from flowers.models import Flower, Schedule, UsersFlower
+
+from .serializers import (FlowerSerializer, ScheduleSerializer,
+                          UsersFlowerSerializer)
 
 
 class FlowerViewSet(viewsets.ReadOnlyModelViewSet):

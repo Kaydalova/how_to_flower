@@ -1,7 +1,8 @@
+from datetime import datetime
+
 from django.db import models
 
 from users.models import User
-from datetime import datetime
 
 
 class Flower(models.Model):

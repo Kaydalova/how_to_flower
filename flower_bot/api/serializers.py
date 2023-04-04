@@ -1,8 +1,9 @@
-from rest_framework import serializers
-from drf_extra_fields.fields import Base64ImageField
-from users.models import User
-from flowers.models import Flower, UsersFlower, Schedule
 from django.shortcuts import get_object_or_404
+from drf_extra_fields.fields import Base64ImageField
+from rest_framework import serializers
+
+from flowers.models import Flower, Schedule, UsersFlower
+from users.models import User
 
 
 class UserSerializer(serializers.ModelSerializer):
