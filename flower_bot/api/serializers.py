@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from drf_extra_fields.fields import Base64ImageField
 from users.models import User
-from flowers.models import Flower, UsersFlower
+from flowers.models import Flower, UsersFlower, Schedule
 from django.shortcuts import get_object_or_404
 
 
@@ -43,7 +43,7 @@ class UsersFlowerSerializer(serializers.ModelSerializer):
     Сериализатор для добавления пользователем своего цветка
     в личный кабинет.
     """
-    image = Base64ImageField(use_url=True, max_length=None)
+    image = Base64ImageField(use_url=True, max_length=None, required=False)
     owner = serializers.PrimaryKeyRelatedField(
         read_only=True, default=serializers.CurrentUserDefault())
 
@@ -62,7 +62,27 @@ class UsersFlowerSerializer(serializers.ModelSerializer):
         flower = get_object_or_404(
             Flower,
             id=self.initial_data.get('flower'))
+        print(flower)
+        print(self.initial_data)
+        if not self.initial_data.get('image'):
+            image = flower.image
         data.update({
-            'flower': flower
+            'flower': flower,
+            'image': image,
         })
+
         return data
+
+
+class ScheduleSerializer(serializers.ModelSerializer):
+    """
+    Сериализатор для просмотра объектов модели Schedule.
+    """
+    class Meta:
+        model = Schedule
+        fields = ('id',
+                  'flower',
+                  'day',
+                  'time',
+                  'action',
+                  )

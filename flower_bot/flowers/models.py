@@ -1,6 +1,7 @@
 from django.db import models
 
 from users.models import User
+from datetime import datetime
 
 
 class Flower(models.Model):
@@ -92,7 +93,8 @@ class Schedule(models.Model):
     day = models.SmallIntegerField(
         verbose_name='День недели от 0 до 6')
     time = models.TimeField(
-        verbose_name='Время полива')
+        default=datetime.now,
+        verbose_name='Время оповещения')
     action = models.SmallIntegerField(
         verbose_name='1 - полить, 0 - побрызгать, 2 - подкормить')
 
@@ -102,4 +104,4 @@ class Schedule(models.Model):
         verbose_name_plural = 'Расписание'
 
     def __str__(self):
-        return self.flower
+        return self.flower.name
