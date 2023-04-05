@@ -50,7 +50,7 @@ class Flower(models.Model):
 
 
 class UsersFlower(models.Model):
-    flower = models.ForeignKey(
+    flower_type = models.ForeignKey(
         Flower,
         on_delete=models.CASCADE,
         verbose_name='Вид цветочка')
