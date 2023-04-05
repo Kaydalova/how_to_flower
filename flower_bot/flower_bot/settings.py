@@ -179,8 +179,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 USER_MAX_LENGTH = 150
 EMAIL_MAX_LENGTH = 254
 
-CORS_URLS_REGEX = r'^/api/.*$'
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
-]
+CORS_ORIGIN_ALLOW_ALL = True
+
+#CORS_URLS_REGEX = r'^/api/.*$'
+
+# CORS_ALLOWED_ORIGINS = [
+#     'http://localhost:3000',
+# ]
