@@ -52,7 +52,7 @@ class UsersFlowerSerializer(serializers.ModelSerializer):
         model = UsersFlower
         fields = (
             'id',
-            'flower',
+            'flower_type',
             'name',
             'owner',
             'image',
@@ -62,13 +62,13 @@ class UsersFlowerSerializer(serializers.ModelSerializer):
     def validate(self, data):
         flower = get_object_or_404(
             Flower,
-            id=self.initial_data.get('flower'))
+            id=self.initial_data.get('flower_type'))
         print(flower)
         print(self.initial_data)
         if not self.initial_data.get('image'):
             image = flower.image
         data.update({
-            'flower': flower,
+            'flower_type': flower,
             'image': image,
         })
 
