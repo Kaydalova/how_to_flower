@@ -38,6 +38,8 @@ services:
     # запросы с внешнего порта 80 перенаправляем на внутренний порт 80
     ports:
       - "80:80"
+      - "443:443"  # certbot
+    restart: always
     volumes:
       # При сборке скопировать созданный конфиг nginx из исходной директории 
       # в контейнер и сохранить его в директорию /etc/nginx/conf.d/
@@ -48,8 +50,20 @@ services:
       # Данные, хранящиеся в томе media_value, будут доступны в контейнере nginx
       # через директорию /var/html/media/
       - media_value:/var/html/media/
+      # certbot
+      - ./certbot/www:/var/www/certbot/:ro
+
     depends_on:
       - backend
+
+  # # certbot
+  # certbot:
+  #   container_name: service_certbot
+  #   image: certbot/cerbot:latest
+  #   volumes:
+  #     - ./certbot/www/:/var/www/certbot/:rw
+  
+
 
 volumes:
   static_value:
