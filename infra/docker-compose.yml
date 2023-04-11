@@ -56,12 +56,12 @@ services:
     depends_on:
       - backend
 
-  # # certbot
-  # certbot:
-  #   container_name: service_certbot
-  #   image: certbot/cerbot:latest
-  #   volumes:
-  #     - ./certbot/www/:/var/www/certbot/:rw
+  # certbot
+  certbot:
+    container_name: service_certbot
+    image: certbot/cerbot:latest
+    volumes:
+      - ./certbot/www/:/var/www/certbot/:rw
   
 
 
