@@ -1,5 +1,6 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticated
 
 from flowers.models import Flower, Schedule, UsersFlower
 
@@ -17,11 +18,21 @@ class FlowerViewSet(viewsets.ReadOnlyModelViewSet):
 
 
 class UsersFlowerViewSet(viewsets.ModelViewSet):
+    """
+    Обрабатывает запросы только от авторизованного пользователя.
+    Методы list и retrive отдают только те цветы,
+    которые принадлежат юзеру.
+    """
     queryset = UsersFlower.objects.all()
     serializer_class = UsersFlowerSerializer
+    permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
+    def get_queryset(self):
+        return UsersFlower.objects.filter(
+            owner=self.request.user)
 
 
 class ScheduleViewSet(viewsets.ModelViewSet):
