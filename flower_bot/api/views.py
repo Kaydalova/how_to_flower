@@ -23,7 +23,6 @@ class UsersFlowerViewSet(viewsets.ModelViewSet):
     Методы list и retrive отдают только те цветы,
     которые принадлежат юзеру.
     """
-    queryset = UsersFlower.objects.all()
     serializer_class = UsersFlowerSerializer
     permission_classes = [IsAuthenticated]
 
@@ -36,9 +35,12 @@ class UsersFlowerViewSet(viewsets.ModelViewSet):
 
 
 class ScheduleViewSet(viewsets.ModelViewSet):
-    queryset = Schedule.objects.all()
     serializer_class = ScheduleSerializer
-    # permission_classes = (OwnerOrReadOnly,)
+    permission_classes = [IsAuthenticated]
     filter_backends = (DjangoFilterBackend,)
     pagination_class = None
     filterset_fields = ('flower',)
+
+    def get_queryset(self):
+        return Schedule.objects.filter(
+            flower__owner=self.request.user)

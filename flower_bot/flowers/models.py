@@ -60,8 +60,7 @@ class UsersFlower(models.Model):
     owner = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-        verbose_name='Владелец',
-        related_name='flower')
+        verbose_name='Владелец')
     image = models.ImageField(
         upload_to='flowers/images/',
         null=True,
@@ -90,7 +89,8 @@ class Schedule(models.Model):
     flower = models.ForeignKey(
         UsersFlower,
         on_delete=models.CASCADE,
-        verbose_name='Цветочек')
+        verbose_name='Цветочек',
+        related_name='schedules')
     day = models.SmallIntegerField(
         verbose_name='День недели от 0 до 6')
     time = models.TimeField(
