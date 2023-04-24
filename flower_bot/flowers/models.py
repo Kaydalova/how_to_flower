@@ -30,12 +30,6 @@ class Flower(models.Model):
     pat_friendly = models.CharField(
         verbose_name='Пэт-френдли',
         max_length=1000)
-    watering_int = models.SmallIntegerField(
-        verbose_name='Частота полива для бота')
-    sprinkle_int = models.SmallIntegerField(
-        verbose_name='Частота опрыскиваний для бота')
-    feeding_int = models.SmallIntegerField(
-        verbose_name='Подкормка для бота, номер месяца')
     pot = models.CharField(
         verbose_name='Горшочек',
         max_length=1000)

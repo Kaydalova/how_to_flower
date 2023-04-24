@@ -14,9 +14,6 @@ class FlowerAdmin(admin.ModelAdmin):
         'light',
         'watering',
         'pat_friendly',
-        'watering_int',
-        'sprinkle_int',
-        'feeding_int',
         'pot'
     )
 
