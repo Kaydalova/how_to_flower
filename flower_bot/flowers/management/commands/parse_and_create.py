@@ -39,7 +39,9 @@ class Command(BaseCommand):
             image_url = urljoin(BASE_URL, image)
             response = requests.get(image_url)
             filename = f'{name.replace(" ","")}.jpg'
-            downloads = f'{settings.BASE_DIR}/media/flowers/images/{filename}'
+            # downloads = f'{
+            # settings.BASE_DIR}/media/flowers/images/{filename}'
+            downloads = f'{settings.MEDIA_ROOT}/flowers/images/{filename}'
             with open(downloads, 'wb') as file:
                 file.write(response.content)
             temperature = text_descriptions[1]
@@ -58,5 +60,4 @@ class Command(BaseCommand):
                 pot=pot)
             if newby not in upload_list:
                 upload_list.append(newby)
-        print(upload_list)
         Flower.objects.bulk_create(upload_list)
