@@ -41,7 +41,10 @@ class Command(BaseCommand):
             filename = f'{name.replace(" ","")}.jpg'
             # downloads = f'{
             # settings.BASE_DIR}/media/flowers/images/{filename}'
+            # downloads = f'{settings.MEDIA_ROOT}/flowers/images/{filename}'
             downloads = f'{settings.MEDIA_ROOT}/flowers/images/{filename}'
+            # downloads = f'{settings.MEDIA_ROOT}/flowers/images/{filename}'
+            d1 = downloads.split('media/')[-1]
             with open(downloads, 'wb') as file:
                 file.write(response.content)
             temperature = text_descriptions[1]
@@ -52,7 +55,7 @@ class Command(BaseCommand):
             newby = Flower(
                 name=name,
                 type=type,
-                image=downloads,
+                image=d1,
                 temperature=temperature,
                 light=light,
                 watering=watering,
