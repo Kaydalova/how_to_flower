@@ -32,7 +32,7 @@ class Command(BaseCommand):
             type = 'TODO'
             name = soup.find('h1').text
             text_descriptions = [
-                desc.text.replace('\xa0', '') for desc in soup.find(
+                desc.text.replace('\xa0', ' ') for desc in soup.find(
                     'div', attrs={'class': 'text_block m4_mb'}).find_all('p')]
             image = soup.find(
                 'div', attrs={'class': 'main_images'}).find('img')['data-src']
