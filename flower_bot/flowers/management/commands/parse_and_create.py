@@ -22,7 +22,6 @@ class Command(BaseCommand):
 
         upload_list = []
         Flower.objects.all().delete()
-        print('deleted')
         soup = cook_soup(FIRST_URL)
         instructions = soup.find('div', attrs={
             'class': 'plant_instructions_list'})
@@ -39,11 +38,7 @@ class Command(BaseCommand):
             image_url = urljoin(BASE_URL, image)
             response = requests.get(image_url)
             filename = f'{name.replace(" ","")}.jpg'
-            # downloads = f'{
-            # settings.BASE_DIR}/media/flowers/images/{filename}'
-            # downloads = f'{settings.MEDIA_ROOT}/flowers/images/{filename}'
             downloads = f'{settings.MEDIA_ROOT}/flowers/images/{filename}'
-            # downloads = f'{settings.MEDIA_ROOT}/flowers/images/{filename}'
             d1 = downloads.split('media/')[-1]
             with open(downloads, 'wb') as file:
                 file.write(response.content)
@@ -51,7 +46,13 @@ class Command(BaseCommand):
             light = text_descriptions[2]
             watering = text_descriptions[3] + text_descriptions[4]
             pot = text_descriptions[7]
-            pet_friendly = 0
+            try:
+                pet_friendly = [desc.text for desc in soup.find(
+                    'div', attrs={'class': 'text_block m2_mb'}).find_all(
+                        'div', attrs={'class': 'text'})][-1]
+            except IndexError:
+                pet_friendly = (
+                    'Растение может представлять опасность для животных.')
             newby = Flower(
                 name=name,
                 type=type,
