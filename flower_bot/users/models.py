@@ -13,9 +13,6 @@ class User(AbstractUser):
     first_name = models.CharField(
         'Имя', max_length=settings.USER_MAX_LENGTH,
         validators=[validate_real_name], blank=False)
-    # last_name = models.CharField(
-    # 'Фамилия', max_length=settings.USER_MAX_LENGTH,
-    # validators=[validate_real_name], blank=False)
     password = models.CharField(
         'Пароль', max_length=settings.USER_MAX_LENGTH)
     email = models.EmailField(
@@ -24,7 +21,6 @@ class User(AbstractUser):
         'Chat id TG', max_length=settings.USER_MAX_LENGTH, blank=True)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username', 'first_name']
-    # REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
 
     class Meta:
         ordering = ('id',)

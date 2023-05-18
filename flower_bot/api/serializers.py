@@ -13,9 +13,9 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('email', 'id',
+        fields = ('id', 'email',
                   'username', 'first_name',
-                  'last_name', 'chat_id')
+                  'chat_id')
 
 
 class FlowerSerializer(serializers.ModelSerializer):
