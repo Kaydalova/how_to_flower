@@ -11,6 +11,11 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+TELEGRAM_TOKEN = os.getenv('TOKEN')
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '^=zd05*p3h(+bau4mz)eth3qvg513v^%dz^5-8-*51-f97u!7@'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -182,9 +187,3 @@ EMAIL_MAX_LENGTH = 254
 
 
 CORS_ORIGIN_ALLOW_ALL = True
-
-# CORS_URLS_REGEX = r'^/api/.*$'
-
-# CORS_ALLOWED_ORIGINS = [
-#     'http://localhost:3000',
-# ]
