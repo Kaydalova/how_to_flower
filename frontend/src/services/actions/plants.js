@@ -119,7 +119,7 @@ export function deleteFlower(flowerID) {
     dispatch({
       type: DELETE_FLOWER
     })
-    api.remoweFlower(flowerID).then( res  => {
+    api.removeFlower(flowerID).then( res  => {
       if (res) {
         dispatch({
           type: DELETE_FLOWER_SUCCESS,

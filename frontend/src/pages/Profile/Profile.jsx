@@ -31,7 +31,7 @@ function Profile (props) {
 
   useEffect(()=> {
     dispatch(getMyFlowers());
-  }, [])
+  }, [myFlowers])
 
   function handleEditUserData(data) {
     dispatch(updateUserData(data));
@@ -79,7 +79,7 @@ function Profile (props) {
           && myFlowers.map((item, i) => (
               <UserPlantCard key={i} 
                 plant = {item}
-                />
+              />
           ))}
           <li className="profile__card" >
             <p className="profile__image1">???</p>

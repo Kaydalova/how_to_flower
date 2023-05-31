@@ -8,6 +8,9 @@ import { users } from '../../utils/constants.js';
 import Footer from '../Footer/Footer.jsx';
 import Modal from "../Modal/Modal";
 import { useSelector, useDispatch } from 'react-redux';
+import { deleteFlower } from '../../services/actions/plants';
+import { getMyFlowers, addNewFlower, editFlower } from '../../services/actions/plants';
+import { removeCurrentFlower } from '../../services/actions/currentFlower';
 
 function EditFlowerForm (props) {
   const { handleEditFlower } = props;
@@ -47,6 +50,12 @@ function EditFlowerForm (props) {
   function findFlowerType() {
     if (currentFlower !== {} && plants.find((item) => (item.id === currentFlower.flower_type)) !== undefined)
     return plants.find((item) => (item.id === currentFlower.flower_type)).name || ''
+  }
+
+  function deleteFlower1() {
+    dispatch(deleteFlower(currentFlower.id));
+    dispatch(getMyFlowers());
+    dispatch(removeCurrentFlower());
   }
 
   useEffect(()=> {
@@ -90,7 +99,9 @@ return(
         )))}
       </select>
       <button type="submit">Сохранить изменения</button>
+      <button type="button" onClick={deleteFlower1}>Удалить цветок</button>
     </form>}
+
   </>
 )
 }
