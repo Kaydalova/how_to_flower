@@ -45,8 +45,8 @@ function Profile (props) {
     setAddFlowerModalIsOpen(false);
   }
 
-  function handleEditFlower(data) {
-    dispatch(editFlower(data));
+  function handleEditFlower(flowerID, data) {
+    dispatch(editFlower(flowerID, data));
     dispatch(getMyFlowers());
     dispatch(removeCurrentFlower());
   }
