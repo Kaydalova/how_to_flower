@@ -4,6 +4,11 @@ version: '3.3'
 # имена и описания контейнеров, которые должны быть развёрнуты
 services:
 
+  frontend:
+    image: kaydalova/flowerbot_frontend:latest
+    volumes:
+      - ../frontend/:/app/result_build/
+
   db:
     # образ, из которого должен быть запущен контейнер
     image: postgres:13.0-alpine
@@ -49,9 +54,13 @@ services:
       # Данные, хранящиеся в томе media_value, будут доступны в контейнере nginx
       # через директорию /var/html/media/
       - media_value:/var/html/media/
+      # for frontend 1.6
+      - ../frontend/build:/usr/share/nginx/html/
+      - ../docs/:/usr/share/nginx/html/api/docs/
 
     depends_on:
       - backend
+      - frontend
   
 
 
