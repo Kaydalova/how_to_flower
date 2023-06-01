@@ -38,7 +38,7 @@ class ScheduleViewSet(viewsets.ModelViewSet):
     serializer_class = ScheduleSerializer
     permission_classes = [IsAuthenticated]
     filter_backends = (DjangoFilterBackend,)
-    pagination_class = None
+    # pagination_class = None
     filterset_fields = ('flower',)
 
     def get_queryset(self):
