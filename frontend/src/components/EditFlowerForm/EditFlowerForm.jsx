@@ -42,6 +42,7 @@ function EditFlowerForm (props) {
 
   function handleSubmit(e) {
     e.preventDefault();
+    console.log(currentFlower.id, form);
     handleEditFlower(currentFlower.id, form)
   //const data = {flowerName, flowerType};
   //onUpdateUser(data);
@@ -58,9 +59,13 @@ function EditFlowerForm (props) {
     dispatch(removeCurrentFlower());
   }
 
-  useEffect(()=> {
+  /*useEffect(()=> {
     console.log(form);
   }, [form])
+
+  useEffect(()=> {
+    console.log(currentFlower);
+  }, [form])*/
 
 return(
   <>

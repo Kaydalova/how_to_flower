@@ -106,7 +106,19 @@ export class Api {
     }).then(this._handleResult)
   }
 
+  /*editFlowerInfo(flowerID, data) {
+    return fetch(`${this._bazeUrl}/my_flowers/${flowerID}/`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Token ' + `${localStorage.getItem('token')}`
+      },
+      body: JSON.stringify(data)
+    }).then(this._handleResult)
+  }*/
+
   editFlowerInfo(flowerID, data) {
+    console.log(flowerID, data);
     return fetch(`${this._bazeUrl}/my_flowers/${flowerID}/`, {
       method: 'PATCH',
       headers: {

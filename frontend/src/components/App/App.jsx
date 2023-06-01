@@ -34,6 +34,10 @@ function App() {
     dispatch(getPlants());
   }, [])
 
+  useEffect(()=> {
+    console.log(plants);
+  }, [plants])
+
   useEffect(() => {
     // console.log(sendLogin.authtoken !== undefined);
     if (sendLogin.auth_token !== undefined) 
