@@ -27,7 +27,7 @@ export function getPlants() {
       if (res) {
         dispatch({
           type: GET_PLANTS_SUCCESS,
-          plants: res.results
+          plants: res/*.results*/
         })
       } else {
         dispatch({
@@ -51,7 +51,7 @@ export function getMyFlowers() {
       if (res) {
         dispatch({
           type: GET_MY_FLOWERS_SUCCESS,
-          myFlowers: res.results
+          myFlowers: res/*.results*/
         })
       } else {
         dispatch({
