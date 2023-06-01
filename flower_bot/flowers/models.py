@@ -65,7 +65,6 @@ class UsersFlower(models.Model):
         default=False)
 
     class Meta:
-        ordering = ('name',)
         verbose_name = 'Цветочек'
         verbose_name_plural = 'Цветочки'
 
