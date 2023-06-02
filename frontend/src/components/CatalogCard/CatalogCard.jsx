@@ -1,5 +1,5 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate, Link, useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import './CatalogCard.css';
 import { setCurrentPlant } from '../../services/actions/currentPlant';
 
@@ -8,14 +8,6 @@ function CatalogCard(props) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   
-  /*const { currentPlant } = useSelector(state => state.catalogPlantsReducer);
-  const dispatch = useDispatch();
-
-  function handleClick(ingredient) {
-    dispatch(setCurrentIngredient(ingredient));
-    onIngredientClick(ingredient);
-  }*/
-
   function handleClick(plant) {
     console.log(plant);
     dispatch(setCurrentPlant(plant));
@@ -29,19 +21,19 @@ function CatalogCard(props) {
         <h3 className="catalogCard__title">{plant.name}</h3>
         <div className="catalogCard__row">
           <p className="catalogCard__subtitle">Советы по поливу:</p>
-          <p className="catalogCard__text">{plant.watering}</p>
+          <p className="catalogCard__text">{plant.watering.substring(7)}</p>
         </div>
         <div className="catalogCard__row">
           <p className="catalogCard__subtitle">Освещение:</p>
-          <p className="catalogCard__text">{plant.light}</p>
+          <p className="catalogCard__text">{plant.light.substring(10)}</p>
         </div>
         <div className="catalogCard__row">
           <p className="catalogCard__subtitle">Температурный режим:</p>
-          <p className="catalogCard__text">{plant.temperature}</p>
+          <p className="catalogCard__text">{plant.temperature.substring(13)}</p>
         </div>
         <div className="catalogCard__row">
           <p className="catalogCard__subtitle">Подбор горшка:</p>
-          <p className="catalogCard__text">{plant.pot}</p>
+          <p className="catalogCard__text">{plant.pot.substring(6)}</p>
         </div>
         <div className="catalogCard__row">
           <p className="catalogCard__subtitle">Отношения с животными:</p>

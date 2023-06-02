@@ -23,29 +23,29 @@ function PlantPage(props) {
     }
     {(currentPlant !== undefined) && 
 
-    <div className="catalogCard__card" >
-      <img src={currentPlant.image} alt="Изображение цветка" className="catalogCard__image"/>
-      <div className="catalogCard__text-container">
-        <h3 className="catalogCard__title">{currentPlant.name}</h3>
-        <div className="catalogCard__row">
-          <p className="catalogCard__subtitle">Советы по поливу:</p>
-          <p className="catalogCard__text">{currentPlant.watering}</p>
+    <div className="plantPage__card" >
+      <img src={currentPlant.image} alt="Изображение цветка" className="plantPage__image"/>
+      <div className="plantPage__text-container">
+        <h3 className="plantPage__title">{currentPlant.name}</h3>
+        <div className="plantPage__row">
+          <p className="plantPage__subtitle">Советы по поливу:</p>
+          <p className="plantPage__text">{currentPlant.watering.substring(7)}</p>
         </div>
-        <div className="catalogCard__row">
-          <p className="catalogCard__subtitle">Освещение:</p>
-          <p className="catalogCard__text">{currentPlant.light}</p>
+        <div className="plantPage__row">
+          <p className="plantPage__subtitle">Освещение:</p>
+          <p className="plantPage__text">{currentPlant.light.substring(10)}</p>
         </div>
-        <div className="catalogCard__row">
-          <p className="catalogCard__subtitle">Температурный режим:</p>
-          <p className="catalogCard__text">{currentPlant.temperature}</p>
+        <div className="plantPage__row">
+          <p className="plantPage__subtitle">Температурный режим:</p>
+          <p className="plantPage__text">{currentPlant.temperature.substring(13)}</p>
         </div>
-        <div className="catalogCard__row">
-          <p className="catalogCard__subtitle">Подбор горшка:</p>
-          <p className="catalogCard__text">{currentPlant.pot}</p>
+        <div className="plantPage__row">
+          <p className="plantPage__subtitle">Подбор горшка:</p>
+          <p className="plantPage__text">{currentPlant.pot.substring(6)}</p>
         </div>
-        <div className="catalogCard__row">
-          <p className="catalogCard__subtitle">Отношения с животными:</p>
-          <p className="catalogCard__text">{currentPlant.pet_friendly}</p>
+        <div className="plantPage__row">
+          <p className="plantPage__subtitle">Отношения с животными:</p>
+          <p className="plantPage__text">{currentPlant.pet_friendly}</p>
         </div>
       </div>
     </div>}

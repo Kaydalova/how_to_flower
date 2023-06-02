@@ -1,6 +1,6 @@
 @import url(../../vendor/fonts.css);
 
-.catalogCard__card {
+.plantPage__card {
   display: flex;
   align-content: center;
   flex-direction: column;
@@ -25,7 +25,7 @@
   }
 }*/
 
-.catalogCard__title {
+.plantPage__title {
   font-family: 'Inter', sans-serif;
   font-weight: 500;
   font-size: 24px;
@@ -38,14 +38,14 @@
   /*align-self: flex-start;*/
 } 
 
-.catalogCard__text-container {
+.plantPage__text-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   font-family: inherit;
 }
 
-.catalogCard__text {
+.plantPage__text {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
   font-size: 14px;
@@ -55,7 +55,7 @@
   padding-bottom: 10px;
 }
 
-.catalogCard__subtitle {
+.plantPage__subtitle {
   font-family: 'Inter', sans-serif;
   font-weight: 500;
   font-size: 18px;
@@ -66,161 +66,15 @@
   padding-top: 10px;
 }
 
-.catalogCard__image {
+.plantPage__image {
   width: 300px;
   height: 300px;
   object-fit: contain
 }
 
 @media screen and (max-width: 500px) {
-  .catalogCard__image {
+  .plantPage__image {
     width: 280px;
     height: 280px;
   }
-}
-
-/*@media screen and (max-width: 800px) {
-  .catalogCard__card {
-    flex-direction: column-reverse;
-  }
-}*/
-
-
-
-.register__underbottom-text {
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 17px;
-  color: #A0A0A0;
-  margin: 0;
-  padding-bottom: 70px;
-}
-
-.register__link {
-  color: #3456F3;
-  text-decoration: none;
-}
-
-.register__link:hover {
-  opacity: 0.5;
-  cursor: pointer;
-  transition: 1s;
-}
-
-.register__link-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  padding-top: 16px;
-  gap: 6px;
-}
-
-@media screen and (max-width: 770px) {
-  .register__container {
-    padding-top: 100px;
-  }
-}
-
-@media screen and (max-width: 770px) {
-  .register__underbottom-text {
-    padding-bottom: 232px;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .register__container {
-    min-width: 282px;
-    min-height: 322px;
-    padding: 60px 30px 40px 30px;
-    align-items: center;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .register__title {
-    padding: 50px 0 80px 0;
-    align-self: center;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .register__input {
-    max-width: 260px;
-  }
-}
-
-.register__input :-webkit-autofill,
-.register__input :-webkit-autofill:hover,
-.register__input :-webkit-autofill:focus,
-.register__input :-webkit-autofill:active{
-  -webkit-box-shadow: 0 0 0 30px #FAFAFA inset !important;
-}
-
-@media screen and (max-width: 770px) {
-  .register__button {
-    margin-top: 169px;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .register__button {
-    width: 260px;
-    height: 45px;
-    margin-top: 120px;
-    font-size: 16px;
-    line-height: 17px;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .register__link-container {
-    padding-top: 14px;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .register__underbottom-text {
-    font-size: 12px;
-    line-height: 15px;
-    padding-bottom: 30px;
-  }
-}
-
-.register__text-error {
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 17px;
-  color: #A0A0A0;
-  margin: 0;
-  text-align: center;
-}
-
-@media screen and (max-width: 500px) {
-  .register__text-error {
-    font-size: 12px;
-    line-height: 15px;
-  }
-}
-
-.button_type_primary {
-  color: #ffffff;
-	background: linear-gradient(63.18deg, #81c75b 0%, #d3f35c 100%);
-}
-
-.button_type_primary:hover {
-	box-shadow: 0px 0px 16px 8px rgba(142, 249, 158, 0.25), 0px 0px 8px 8px rgba(213, 249, 172, 0.25);
-	filter: drop-shadow(0px 4px 32px rgba(217, 231, 128, 0.5));
-}
-
-.button_type_primary:active {
-	opacity: 0.9;
-	background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), linear-gradient(63.18deg, #71da59 0%, #acdc4c 100%);
-}
-
-.button_type_primary[disabled] {
-	pointer-events: none;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), linear-gradient(63.18deg, #71da59 0%, #acdc4c 100%);
-  opacity: 0.2;
 }
