@@ -7,6 +7,7 @@ import Login from '../../pages/Login/Login.jsx';
 import Register from '../../pages/Register/Register.jsx';
 import Profile from '../../pages/Profile/Profile.jsx';
 import Catalog from '../../pages/Catalog/Catalog.jsx';
+import PlantPage from '../../pages/PlantPage/PlantPage';
 import { api } from '../../utils/Api';
 import ProtectedRoute from '../ProtectedRoute';
 import { ERROR_MESSAGE } from '../../utils/constants.js';
@@ -34,9 +35,9 @@ function App() {
     dispatch(getPlants());
   }, [])
 
-  useEffect(()=> {
+  /*useEffect(()=> {
     console.log(plants);
-  }, [plants])
+  }, [plants])*/
 
   useEffect(() => {
     // console.log(sendLogin.authtoken !== undefined);
@@ -45,9 +46,9 @@ function App() {
     else setLoggedIn(false)
   }, [sendLogin])
 
-  useEffect(()=> {
+  /*useEffect(()=> {
     dispatch(getPlants());
-  }, [])
+  }, [])*/
 
   function closeModal() {
     setEditUserModalIsOpen(false);
@@ -93,6 +94,7 @@ function App() {
                   loggedIn={loggedIn}/>
               }>  
             </Route>
+            
             <Route 
               path="/sign-in" 
               element={
@@ -119,6 +121,7 @@ function App() {
                 <Catalog loggedIn={loggedIn}/>
               }>
             </Route>
+            <Route path="/catalog/:plantID" element={<PlantPage loggedIn={loggedIn}/>} />
             <Route 
               exact path="/profile" 
               element={

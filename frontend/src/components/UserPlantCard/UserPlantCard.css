@@ -135,3 +135,13 @@
   }
 }
 
+.userPlantCard__link {
+  color: rgb(32, 31, 31);
+  text-decoration-line: underline;
+}
+
+.userPlantCard__link:hover {
+  opacity: 0.5;
+  cursor: pointer;
+  transition: 0.6s;
+}

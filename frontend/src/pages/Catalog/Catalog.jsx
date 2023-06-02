@@ -18,7 +18,7 @@ function Catalog(props) {
 
   // поиск в каталоге - временно. потом переделаю на Redux
   function makeNewSearch(data) {
-    console.log(data);
+    //console.log(data);
     setSearch(data);
   }
 
@@ -27,8 +27,8 @@ function Catalog(props) {
   }
 
   useEffect(() => {
-    console.log(filteredPlants);
-    console.log(search);
+    /*console.log(filteredPlants);
+    console.log(search);*/
     if (filteredPlants && filteredPlants.length === 0 && search !== "") {
       console.log(plants.filter((item) => {return (item.name.toLowerCase().includes(search.toLowerCase()))}))
     };
@@ -36,6 +36,10 @@ function Catalog(props) {
     setFilteredPlants(plants.filter((item) => {return (item.name.toLowerCase().includes(search.toLowerCase()))}))
     else setFilteredPlants(plants)
   }, [search])
+
+  useEffect(() => {
+    setFilteredPlants(plants)
+  }, [plants])
 
   function showAllPlants() {
     setFilteredPlants(plants)
@@ -56,7 +60,7 @@ function Catalog(props) {
           filteredPlants={filteredPlants}
         />
       <ul className="catalog__container">
-        {((filteredPlants !== []) && (filteredPlants !== null)) 
+        {((filteredPlants !== []) && (filteredPlants !== null) && (filteredPlants !== undefined)) 
         && filteredPlants.map((item) => (
             <CatalogCard key={item.id} 
               plant = {item}/>

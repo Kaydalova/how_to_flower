@@ -4,7 +4,7 @@ import {
 } from "../../utils/constants";
 
 const initialState = {
-  currentItem: {},
+  currentPlant: {},
   plantModalIsOpen: false
 }
 
@@ -13,17 +13,8 @@ export const currentPlantReducer = (state = initialState, action) => {
     case SET_PLANT:
       return {
         ...state,
-        currentItem: {
-          id: action.id,
-          name: action.name, 
-          type: action.type,
-          image: action.image, 
-          temperature: action.temperature,
-          light: action.light,
-          watering: action.watering,
-          pet_friendly: action.pet_friendly,
-          pot: action.pot,
-        },
+        currentPlant: action.item,
+        
         plantModalIsOpen: true
       }
     case CLEAR_CURRENT_PLANT:

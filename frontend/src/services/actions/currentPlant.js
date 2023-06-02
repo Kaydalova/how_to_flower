@@ -6,7 +6,7 @@ import {
 export function setCurrentPlant(data) {
   return {
     type: SET_PLANT,
-    id: data.id,
+    /*id: data.id,
     name: data.name, 
     type: data.type,
     image: data.image, 
@@ -15,7 +15,8 @@ export function setCurrentPlant(data) {
     watering: data.watering,
     pet_friendly: data.pet_friendly,
     pot: data.pot,
-    plantModalIsOpen: true
+    plantModalIsOpen: true*/
+    item: data
   }
 }
 
