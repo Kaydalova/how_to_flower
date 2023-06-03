@@ -5,7 +5,7 @@ version: '3.3'
 services:
 
   frontend:
-    image: kaydalova/flowerbot_frontend:v1.6.2023
+    image: kaydalova/flower_frontend:v3.06.2023
     volumes:
       - ../frontend/:/app/result_build/
 
