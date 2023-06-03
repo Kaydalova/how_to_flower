@@ -23,11 +23,6 @@ function Profile (props) {
 
   const {loggedIn, setLoggedIn, closeModal, editUserModalIsOpen/*, editFlowerModalIsOpen*/, addFlowerModalIsOpen, setEditUserModalIsOpen, setEditFlowerModalIsOpen, setAddFlowerModalIsOpen} = props;
   const { userDataRequestRes, sendLogin } = useSelector(state => state.authReducer);
-  //const { userFlowers } = useSelector(state => state.getUserFlowersReduser);
-  /*useEffect(() => {
-    setUserErrorMessage('')
-  }, [])
-*/
 
   useEffect(()=> {
     dispatch(getMyFlowers());
@@ -75,7 +70,7 @@ function Profile (props) {
       </div>
       <section className="profile__content">
         <ul className="profile__plants-container scroll">
-          {myFlowers !== null && myFlowers !== undefined && plants !== null && plants !== undefined && myFlowers.length !== 0 
+          {(myFlowers !== null && myFlowers !== undefined && plants !== null && plants !== undefined) && myFlowers.length !== 0 
           && myFlowers.map((item, i) => (
               <UserPlantCard key={i} 
                 plant = {item}
@@ -118,23 +113,3 @@ function Profile (props) {
 }
 
 export default Profile;
-/*
-      <Modal
-        isOpen={editUserModalIsOpen}
-        onClose={closeModal}
-        children={
-          <EditProfileForm />}>
-      </Modal>
-      <Modal
-        isOpen={editFlowerModalIsOpen}
-        onClose={closeModal}
-        children={
-          <EditFlowerForm />}>
-      </Modal>
-            <Modal
-        isOpen={addFlowerModalIsOpen}
-        onClose={closeModal}
-        children={
-          <AddFlowerForm />}>
-      </Modal>
-*/

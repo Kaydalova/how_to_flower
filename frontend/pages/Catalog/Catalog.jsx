@@ -31,6 +31,10 @@ function Catalog(props) {
   } 
 
   useEffect(() => {
+    console.log(filteredPlants);
+  }, [])
+
+  useEffect(() => {
     /*console.log(filteredPlants);
     console.log(search);*/
     if (filteredPlants && filteredPlants.length === 0 && search !== "") {
@@ -57,6 +61,7 @@ function Catalog(props) {
         />
       <ul className="catalog__container">
         {((filteredPlants !== []) && (filteredPlants !== null) && (filteredPlants !== undefined)) 
+        && ((plants !== []) && (plants !== null) && (plants !== undefined))  
         && filteredPlants.map((item) => (
             <CatalogCard key={item.id} 
               plant = {item}/>

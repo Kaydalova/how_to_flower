@@ -24,12 +24,13 @@ function EditFlowerForm (props) {
   const [form, setValue] = useState({ flower_type: 0, name: '', notification: true });
   const nameInput = document.getElementById('editFlowerNameProfile');
   const typenput = document.getElementById('editFlowerTypeProfile');
+  const notificationInput1 = document.getElementById('notificationEditForm');
 
   useEffect(()=> {
     if (editFlowerModalIsOpen && currentFlower) {
       console.log(1);
       console.log(currentFlower);
-    setValue({ ...form, flower_type: currentFlower.flower_type, name: currentFlower.name, });}
+    setValue({ ...form, flower_type: currentFlower.flower_type, name: currentFlower.name, notification: currentFlower.notification });}
   }, [editFlowerModalIsOpen])
 
   const onNameChange = e => {
@@ -38,6 +39,15 @@ function EditFlowerForm (props) {
 
   const onTypeChange = e => {
     setValue({ ...form, [e.target.name]: plants.find((item) => (item.name === e.target.value)).id });
+  };
+
+  const onNotificationChange = e => {
+    setValue({ ...form, notification: !form.notification });
+    notificationInput1.checked = !notificationInput1.checked;
+  };
+
+  const onNotificationClick = e => {
+    notificationInput1.checked = !notificationInput1.checked;
   };
 
   function handleSubmit(e) {
@@ -58,6 +68,21 @@ function EditFlowerForm (props) {
     dispatch(getMyFlowers());
     dispatch(removeCurrentFlower());
   }
+
+  function changeNotificationText() {
+    if (form.notification) return 'Давайте';
+    else return 'Никогда!'
+  }
+
+  useEffect(()=> {
+    console.log(form);
+  }, [form])
+
+  useEffect(()=> {
+    if (notificationInput1 !== null && form.notification === true)
+    {notificationInput1.checked = true;
+    console.log(notificationInput1.checked);}
+  }, [notificationInput1])
 
   /*useEffect(()=> {
     console.log(form);
@@ -103,6 +128,9 @@ return(
           </>
         )))}
       </select>
+      <p>Напоминать о времени поливки в Телеграм?</p>
+      <input type="checkbox" name="notification" id="notificationEditForm" onChange={onNotificationChange} onClick={onNotificationClick}/> 
+      <label htmlFor="notification">{changeNotificationText()}</label>
       <button type="submit">Сохранить изменения</button>
       <button type="button" onClick={deleteFlower1}>Удалить цветок</button>
     </form>}

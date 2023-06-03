@@ -17,15 +17,25 @@ function AddFlowerForm ({handleAddFlower}) {
   //const { user } = useSelector(state => state.authReducer);
   const [form, setValue] = useState({ flower_type: 1, name: '', notification: true });
   const nameInput = document.getElementById('addFlowerNameProfile');
-  const typenput = document.getElementById('addFlowerTypeProfile');
+  const typeInput = document.getElementById('addFlowerTypeProfile');
+  const notificationInput = document.getElementById('notificationAddForm');
 
   const onNameChange = e => {
     setValue({ ...form, [e.target.name]: e.target.value });
   };
 
   const onTypeChange = e => {
-    
     setValue({ ...form, [e.target.name]: plants.find((item) => (item.name === e.target.value)).id });
+  };
+
+  const onNotificationChange = e => {
+    console.log(e.target);
+    setValue({ ...form, notification: !form.notification });
+    notificationInput.checked = !notificationInput.checked;
+  };
+
+  const onNotificationClick = e => {
+    notificationInput.checked = !notificationInput.checked;
   };
 
   function handleSubmit(e) {
@@ -35,14 +45,25 @@ function AddFlowerForm ({handleAddFlower}) {
   //onUpdateUser(data);
   }
 
-/*useEffect(()=> {
-  console.log(form);
-}, [form])*/
+  function changeNotificationText() {
+    if (form.notification) return 'Давайте';
+    else return 'Никогда!'
+  }
+
+  useEffect(()=> {
+    console.log(form);
+  }, [form])
+
+  useEffect(()=> {
+    if (notificationInput !== null && form.notification === true)
+    {notificationInput.checked = true;
+    console.log(notificationInput.checked);}
+  }, [notificationInput])
 
 return(
   <>
     <p className="profile__title">
-      Изменить данные цветка
+      Добавить новый цветок
     </p>
     <form 
       onSubmit={handleSubmit} 
@@ -67,13 +88,16 @@ return(
         defaultValue='Аглаонема кокомелон'
         onChange={onTypeChange}
         >
-      {((plants !== [] )  
+      {((plants !== [] && plants !== null && plants !== undefined )  
         && plants.map((item, i) => (
           <>
           <option key={i} value={item.name}>{item.name}</option>
           </>
         )))}
       </select>
+      <p>Напоминать о времени поливки в Телеграм?</p>
+      <input type="checkbox"  name="notification" id="notificationAddForm" onChange={onNotificationChange} onClick={onNotificationClick}/> 
+      <label htmlFor="notification">{changeNotificationText()}</label>
       <button type="submit">Добавить</button>
     </form> 
   </>
@@ -81,8 +105,3 @@ return(
 }
 
 export default AddFlowerForm;
-
-/*
-      <input required checked type="radio" name="notification" id="rb2" onChange={setValue({ ...form, notification: false })}/> <label for="rb2">Получать напоминания о поливе в Телеграмм</label>
-
-      */

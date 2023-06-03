@@ -12,13 +12,12 @@ import { api } from '../../utils/Api';
 import ProtectedRoute from '../ProtectedRoute';
 import { ERROR_MESSAGE } from '../../utils/constants.js';
 import { plantsCatalog } from '../../utils/constants.js';
-import { getPlants } from '../../services/actions/plants';
+import { getPlants, getPlants1 } from '../../services/actions/plants';
 import { getUserData } from '../../services/actions/auth';
 import './App.css';
 
 function App() {
 
-  const [flowers, setFlowers] = useState([]);  
   const [loggedIn, setLoggedIn] = useState(false);
   const [userErrorMessage, setUserErrorMessage] = useState('');
   const navigate = useNavigate();
@@ -34,10 +33,6 @@ function App() {
   useEffect(()=> {
     dispatch(getPlants());
   }, [])
-
-  /*useEffect(()=> {
-    console.log(plants);
-  }, [plants])*/
 
   useEffect(() => {
     // console.log(sendLogin.authtoken !== undefined);
