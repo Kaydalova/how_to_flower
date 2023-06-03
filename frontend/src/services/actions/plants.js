@@ -2,12 +2,14 @@ import { api } from '../../utils/Api';
 
 import {
   GET_PLANTS,
+  GET_PLANTS1,
   GET_PLANTS_FAILED,
   GET_PLANTS_SUCCESS,
   ADD_FLOWER,
   ADD_FLOWER_FAILED,
   ADD_FLOWER_SUCCESS,
   GET_MY_FLOWERS,
+  GET_MY_FLOWERS1,
   GET_MY_FLOWERS_FAILED,
   GET_MY_FLOWERS_SUCCESS,
   EDIT_FLOWER,
@@ -27,7 +29,7 @@ export function getPlants() {
       if (res) {
         dispatch({
           type: GET_PLANTS_SUCCESS,
-          plants: res/*.results*/
+          plants: res
         })
       } else {
         dispatch({
@@ -42,6 +44,20 @@ export function getPlants() {
   }
 } 
 
+  export function getPlants1(data) {
+    return {
+      type: GET_PLANTS1,
+      plants1: data
+    }
+  }
+
+  export function getMyFlowers1(data) {
+    return {
+      type: GET_MY_FLOWERS1,
+      myFlowers1: data
+    }
+  }
+
 export function getMyFlowers() {
   return function(dispatch) {
     dispatch({
@@ -51,7 +67,7 @@ export function getMyFlowers() {
       if (res) {
         dispatch({
           type: GET_MY_FLOWERS_SUCCESS,
-          myFlowers: res/*.results*/
+          myFlowers: res
         })
       } else {
         dispatch({

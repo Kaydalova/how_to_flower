@@ -12,13 +12,14 @@ import { api } from '../../utils/Api';
 import ProtectedRoute from '../ProtectedRoute';
 import { ERROR_MESSAGE } from '../../utils/constants.js';
 import { plantsCatalog } from '../../utils/constants.js';
-import { getPlants } from '../../services/actions/plants';
+import { getPlants, getPlants1 } from '../../services/actions/plants';
 import { getUserData } from '../../services/actions/auth';
 import './App.css';
 
 function App() {
 
-  const [flowers, setFlowers] = useState([]);  
+  const [flowers1, setFlowers1] = useState([]);  
+  const [plants1, setPlants1] = useState([]); 
   const [loggedIn, setLoggedIn] = useState(false);
   const [userErrorMessage, setUserErrorMessage] = useState('');
   const navigate = useNavigate();
@@ -61,6 +62,28 @@ function App() {
       console.log(localStorage);
       dispatch(getUserData());
  } }, [sendLogin]);
+
+  function getPlantsTry1() {
+    console.log(1)
+    api.getAllPlants()
+      .then((res) => {
+        console.log(res);
+        setPlants1(res);
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  }
+
+  useEffect(() => {
+    getPlantsTry1()
+  }, []);
+
+  useEffect(() => {
+    console.log(2)
+    console.log(plants1);
+    dispatch(getPlants1(plants1))
+  }, [plants1]);
 
   // проверка токена
 /*  function handleCheckToken() {

@@ -11,6 +11,7 @@ export const ERROR_MESSAGE = {
 export const URL_PATTERN = /^:?https?:\/\/(www\.)?[a-zA-Z\d-]+\.[\w\d\-.~:/?#[\]@!$&'()*+,;=]{2,}#?$/;
 
 export const GET_PLANTS = 'GET_PLANTS';
+export const GET_PLANTS1 = 'GET_PLANTS1';
 export const GET_PLANTS_FAILED = 'GET_PLANTS_FAILED';
 export const GET_PLANTS_SUCCESS = 'GET_PLANTS_SUCCESS';
 export const SEND_USER_FLOWERS_REQUEST = 'SEND_USER_FLOWERS_REQUEST';
@@ -67,5 +68,6 @@ export const DELETE_FLOWER = 'DELETE_FLOWER';
 export const DELETE_FLOWER_FAILED = 'DELETE_FLOWER_FAILED';
 export const DELETE_FLOWER_SUCCESS = 'DELETE_FLOWER_SUCCESS';
 export const GET_MY_FLOWERS = 'GET_MY_FLOWERS';
+export const GET_MY_FLOWERS1 = 'GET_MY_FLOWERS1';
 export const GET_MY_FLOWERS_FAILED = 'GET_MY_FLOWERS_FAILED';
 export const GET_MY_FLOWERS_SUCCESS = 'GET_MY_FLOWERS_SUCCESS';

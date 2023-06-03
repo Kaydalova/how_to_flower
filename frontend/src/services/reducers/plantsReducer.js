@@ -1,11 +1,13 @@
 import {
   GET_PLANTS,
+  GET_PLANTS1,
   GET_PLANTS_FAILED,
   GET_PLANTS_SUCCESS,
   ADD_FLOWER,
   ADD_FLOWER_FAILED,
   ADD_FLOWER_SUCCESS,
   GET_MY_FLOWERS,
+  GET_MY_FLOWERS1,
   GET_MY_FLOWERS_FAILED,
   GET_MY_FLOWERS_SUCCESS,
   EDIT_FLOWER,
@@ -19,10 +21,12 @@ import {
 const initialState = {
   plantsRequest: false,
   plantsRequestFailed: false,
-  plants: null,
+  plants: [],
+  plants1: [],
   myFlowersRequest: false,
   myFlowersRequestFailed: false,
-  myFlowers: null,
+  myFlowers: [],
+  myFlowers1: [],
   addFlowerRequest: false,
   addFlowerRequestFailed: false,
 }
@@ -34,6 +38,12 @@ export const plantsReducer = (state = initialState, action) => {
         ...state,
         plantsRequest: true,
         plantsRequestFailed: false,
+      };
+    }
+    case GET_PLANTS1: {
+      return {
+        ...state,
+        plants1: action.plants1, 
       };
     }
     case GET_PLANTS_SUCCESS: {
@@ -55,6 +65,12 @@ export const plantsReducer = (state = initialState, action) => {
         ...state,
         myFlowersRequest: true,
         myFlowersRequestFailed: false,
+      };
+    }
+    case GET_MY_FLOWERS1: {
+      return {
+        ...state,
+        myFlowers1: action.myFlowers1,
       };
     }
     case GET_MY_FLOWERS_SUCCESS: {

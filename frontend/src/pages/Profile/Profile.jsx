@@ -75,7 +75,7 @@ function Profile (props) {
       </div>
       <section className="profile__content">
         <ul className="profile__plants-container scroll">
-          {myFlowers !== null && myFlowers.length !== 0 
+          {myFlowers !== null && myFlowers !== undefined && plants !== null && plants !== undefined && myFlowers.length !== 0 
           && myFlowers.map((item, i) => (
               <UserPlantCard key={i} 
                 plant = {item}
