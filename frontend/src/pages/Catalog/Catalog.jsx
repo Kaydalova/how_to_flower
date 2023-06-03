@@ -13,7 +13,7 @@ function Catalog(props) {
   const {loggedIn} = props;
   const [search, setSearch] = useState('');
   const { plants } = useSelector(state => state.plantsReducer);
-  const [filteredPlants, setFilteredPlants] = useState(plants);
+  const [filteredPlants, setFilteredPlants] = useState([]);
   const dispatch = useDispatch();
 
   // поиск в каталоге - временно. потом переделаю на Redux
@@ -26,6 +26,10 @@ function Catalog(props) {
     dispatch(getPlants());
   }
 
+  function showAllPlants() {
+    setFilteredPlants(plants)
+  } 
+
   useEffect(() => {
     /*console.log(filteredPlants);
     console.log(search);*/
@@ -36,14 +40,6 @@ function Catalog(props) {
     setFilteredPlants(plants.filter((item) => {return (item.name.toLowerCase().includes(search.toLowerCase()))}))
     else setFilteredPlants(plants)
   }, [search])
-
-  useEffect(() => {
-    setFilteredPlants(plants)
-  }, [plants])
-
-  function showAllPlants() {
-    setFilteredPlants(plants)
-  } 
 
   return (
     <div className="catalog__section">
