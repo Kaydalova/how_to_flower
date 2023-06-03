@@ -1,0 +1,17 @@
+@import url(../../vendor/fonts.css);
+
+.main__content {
+  max-width: 1140px;
+  padding: 0 20px 0px 20px;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  align-self: center;
+}
+
+@media screen and (max-width: 380px) {
+  .main__content {
+    padding: 0 10px 0px 10px;
+  }
+}
