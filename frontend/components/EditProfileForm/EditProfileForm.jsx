@@ -41,9 +41,6 @@ function EditProfileForm ({handleEditUserData, editUserModalIsOpen}) {
       console.log(1);
     setValue({ ...form, email: userDataRequestRes.email, username: userDataRequestRes.username, first_name: userDataRequestRes.first_name, chat_id: userDataRequestRes.chat_id });}
     if (editUserModalIsOpen && submitButton1 !== null) {
-      console.log(2);
-      console.log(submitButton1);
-      console.log(submitButton1.classList);
       submitButton1.classList.remove('editProfileForm__button-active', 'button_type_primary');
       submitButton1.classList.add('editProfileForm__button-disabled');
       submitButton1.disabled = true;};

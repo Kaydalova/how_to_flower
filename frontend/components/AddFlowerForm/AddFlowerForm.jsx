@@ -8,17 +8,22 @@ import { users } from '../../utils/constants.js';
 import Footer from '../Footer/Footer.jsx';
 import Modal from "../Modal/Modal";
 import { useSelector, useDispatch } from 'react-redux';
+import { updateUserData, getUserData } from '../../services/actions/auth';
 
-function AddFlowerForm ({handleAddFlower}) {
+function AddFlowerForm (props) {
+  const { handleAddFlower, handleEditUserTlg } = props;
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { plants } = useSelector(state => state.plantsReducer);
-  //const flowerNames = plants.map((item) => ({name: item.name, id: item.id}));
-  //const { user } = useSelector(state => state.authReducer);
+  const { userDataRequestRes } = useSelector(state => state.authReducer);
   const [form, setValue] = useState({ flower_type: 1, name: '', notification: true });
+  const [formForTlg, setFormForTlg] = useState({ email: '', username: '', first_name: '', chat_id: '' });
+  const [tlg, setTlg] = useState(false);
   const nameInput = document.getElementById('addFlowerNameProfile');
   const typeInput = document.getElementById('addFlowerTypeProfile');
   const notificationInput = document.getElementById('notificationAddForm');
+  let botText = 'наш бот';
+  const botLink = botText.link("https://t.me/how_to_flower_bot");
 
   const onNameChange = e => {
     setValue({ ...form, [e.target.name]: e.target.value });
@@ -29,7 +34,6 @@ function AddFlowerForm ({handleAddFlower}) {
   };
 
   const onNotificationChange = e => {
-    console.log(e.target);
     setValue({ ...form, notification: !form.notification });
     notificationInput.checked = !notificationInput.checked;
   };
@@ -38,11 +42,24 @@ function AddFlowerForm ({handleAddFlower}) {
     notificationInput.checked = !notificationInput.checked;
   };
 
+  const onTlgChange = e => {
+    setFormForTlg({ ...formForTlg, [e.target.name]: e.target.value });
+  };
+
   function handleSubmit(e) {
     e.preventDefault();
-    handleAddFlower(form)
-  //const data = {flowerName, flowerType};
-  //onUpdateUser(data);
+    handleAddFlower(form);
+  }
+
+  function handleLinkClick() {
+    window.open("https://t.me/how_to_flower_bot");
+  }
+
+  function handleTlgSubmit(e) {
+    e.preventDefault();
+    console.log(formForTlg);
+    handleEditUserTlg(formForTlg);
+    setTlg(true);
   }
 
   function changeNotificationText() {
@@ -55,9 +72,13 @@ function AddFlowerForm ({handleAddFlower}) {
   }, [form])
 
   useEffect(()=> {
+    setFormForTlg({ email: userDataRequestRes.email, username: userDataRequestRes.username,  first_name: userDataRequestRes.first_name, chat_id: '' });
+    setTlg(false);
+  }, [])
+
+  useEffect(()=> {
     if (notificationInput !== null && form.notification === true)
-    {notificationInput.checked = true;
-    console.log(notificationInput.checked);}
+    {notificationInput.checked = true;}
   }, [notificationInput])
 
 return(
@@ -98,6 +119,32 @@ return(
       <p>Напоминать о времени поливки в Телеграм?</p>
       <input type="checkbox"  name="notification" id="notificationAddForm" onChange={onNotificationChange} onClick={onNotificationClick}/> 
       <label htmlFor="notification">{changeNotificationText()}</label>
+      {(userDataRequestRes.chat_id === '' && form.notification) && (
+        <>
+        <p>Нам нужен Ваш ник в Телеграм, чтобы отправлять напоминания о поливке. Укажите его, пожалуйста</p>
+        <form 
+          onSubmit={handleTlgSubmit} 
+          id="addFlowerForm__addTlg" 
+          className="profile__container">
+        <input 
+          id="addFlowerTlg" 
+          name="chat_id" 
+          minLength='2' 
+          maxLength='100' 
+          placeholder="@print_your_magnificent_nickname_here"
+          type="text" 
+          value={formForTlg.chat_id}
+          onChange={onTlgChange} 
+          className="profile__text profile__row-container"/>
+        <button type="submit" onClick={handleTlgSubmit}>Вот он</button>
+        </form> 
+      </>
+      )}
+      {(userDataRequestRes.chat_id !== '' && form.notification && tlg) && (
+        <>
+        <p>Спасибо! Теперь зайдите в <span className="addFlowerForm__botLink" onClick={handleLinkClick}>наш бот </span>и скажите ему что-нибудь, чтобы он мог отправлять Вам сообщения</p>
+      </>
+      )}
       <button type="submit">Добавить</button>
     </form> 
   </>

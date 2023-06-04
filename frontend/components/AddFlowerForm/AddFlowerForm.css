@@ -102,6 +102,18 @@
   color: #FF004D;
 }
 
+.addFlowerForm__botLink {
+  text-decoration: none;
+  border: none;
+  color: #349806;
+}
+
+.addFlowerForm__botLink:hover {
+  opacity: 0.4;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
 @media screen and (max-width: 500px) {
   .profile__underbottom-text {
     font-size: 12px;

@@ -18,8 +18,6 @@ function UserPlantCard(props) {
   const { plants, myFlowers } = useSelector(state => state.plantsReducer);
 
   const handleClick = e => {
-    console.log('dd');
-    console.log(plant);
     dispatch(setCurrentFlower(plant));
   }
 

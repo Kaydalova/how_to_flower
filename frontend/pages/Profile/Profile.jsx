@@ -21,17 +21,22 @@ function Profile (props) {
   const { plants, myFlowers } = useSelector(state => state.plantsReducer);
   const { editFlowerModalIsOpen } = useSelector(state => state.currentFlowerReducer);
 
-  const {loggedIn, setLoggedIn, closeModal, editUserModalIsOpen/*, editFlowerModalIsOpen*/, addFlowerModalIsOpen, setEditUserModalIsOpen, setEditFlowerModalIsOpen, setAddFlowerModalIsOpen} = props;
+  const {loggedIn, setLoggedIn, closeModal, editUserModalIsOpen, addFlowerModalIsOpen, setEditUserModalIsOpen, setAddFlowerModalIsOpen} = props;
   const { userDataRequestRes, sendLogin } = useSelector(state => state.authReducer);
 
   useEffect(()=> {
     dispatch(getMyFlowers());
-  }, [myFlowers])
+  }, [])
 
   function handleEditUserData(data) {
     dispatch(updateUserData(data));
     dispatch(getUserData());
     setEditUserModalIsOpen(false);
+  }
+
+  function handleEditUserTlg(data) {
+    dispatch(updateUserData(data));
+    dispatch(getUserData());
   }
 
   function handleAddFlower(data) {
@@ -94,7 +99,7 @@ function Profile (props) {
         isOpen={addFlowerModalIsOpen}
         onClose={closeModal}
         children={
-          <AddFlowerForm handleAddFlower={handleAddFlower} addFlowerModalIsOpen={addFlowerModalIsOpen}/>}>
+          <AddFlowerForm handleAddFlower={handleAddFlower} addFlowerModalIsOpen={addFlowerModalIsOpen} handleEditUserTlg={handleEditUserTlg}/>}>
       </Modal>
       <Modal
         isOpen={editUserModalIsOpen}
@@ -106,7 +111,7 @@ function Profile (props) {
         isOpen={editFlowerModalIsOpen}
         onClose={handleCloseEditFlowerModal}
         children={
-          <EditFlowerForm handleEditFlower={handleEditFlower} />}>
+          <EditFlowerForm handleEditFlower={handleEditFlower} handleEditUserTlg={handleEditUserTlg} />}>
       </Modal>
     </div>
   )
