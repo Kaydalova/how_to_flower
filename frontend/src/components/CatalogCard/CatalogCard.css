@@ -19,14 +19,6 @@
   padding: 10px;
 }
 
-.catalogCard__card:hover {
-  cursor: pointer;
-  background-color: #fcfcfc;;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: 0.7s;
-}
-
 /*@media screen and (max-width: 1040px) {
   .catalogCard__card {
     max-width: 450px;
@@ -40,7 +32,7 @@
   font-size: 24px;
   line-height: 29px;
   margin: 0;
-  color: rgb(0, 0, 0);
+  color: #323232;
   margin: 0;
   padding: 40px 0;
   text-align: center;
@@ -69,16 +61,27 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
-  color: #250606;
+  color: #323232;
   margin: 0;
   padding-bottom: 10px;
   padding-top: 10px;
+  text-align: center;
+  background-color: #fcfcfc;
+  border-radius: 20px;
+}
+
+.catalogCard__subtitle:hover {
+  cursor: pointer;
+  transition: 0.7s;
+  transform: scale(1.2);
+  opacity: 0.7;
 }
 
 .catalogCard__image {
   width: 300px;
   height: 300px;
-  object-fit: contain
+  object-fit: contain;
+  border-radius: 120px;
 }
 
 @media screen and (max-width: 500px) {

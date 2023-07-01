@@ -20,24 +20,7 @@ function CatalogCard(props) {
       <div className="catalogCard__text-container">
         <h3 className="catalogCard__title">{plant.name}</h3>
         <div className="catalogCard__row">
-          <p className="catalogCard__subtitle">Советы по поливу:</p>
-          <p className="catalogCard__text">{plant.watering.substring(7)}</p>
-        </div>
-        <div className="catalogCard__row">
-          <p className="catalogCard__subtitle">Освещение:</p>
-          <p className="catalogCard__text">{plant.light.substring(10)}</p>
-        </div>
-        <div className="catalogCard__row">
-          <p className="catalogCard__subtitle">Температурный режим:</p>
-          <p className="catalogCard__text">{plant.temperature.substring(13)}</p>
-        </div>
-        <div className="catalogCard__row">
-          <p className="catalogCard__subtitle">Подбор горшка:</p>
-          <p className="catalogCard__text">{plant.pot.substring(6)}</p>
-        </div>
-        <div className="catalogCard__row">
-          <p className="catalogCard__subtitle">Отношения с животными:</p>
-          <p className="catalogCard__text">{plant.pet_friendly}</p>
+          <p onClick={() => handleClick(plant)} className="catalogCard__subtitle">Больше информации</p>
         </div>
       </div>
     </li>

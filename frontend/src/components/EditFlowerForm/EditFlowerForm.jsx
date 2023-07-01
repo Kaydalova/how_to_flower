@@ -99,12 +99,12 @@ return(
       {((plants !== [] )  
         && plants.map((item, i) => (
           <>
-          <option key={i} value={item.name}>{item.name}</option>
+            <option key={i} value={item.name}>{item.name}</option>
           </>
         )))}
       </select>
-      <button type="submit">Сохранить изменения</button>
-      <button type="button" onClick={deleteFlower1}>Удалить цветок</button>
+      <button className="editFlowerForm__button" type="submit">Сохранить изменения</button>
+      <button className="editFlowerForm__button" type="button" onClick={deleteFlower1}>Удалить цветок</button>
     </form>}
 
   </>
