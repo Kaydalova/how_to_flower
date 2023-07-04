@@ -1,0 +1,140 @@
+@import url(../../../vendor/fonts.css);
+
+.steps__content {
+  background-color: #ffffff;
+}
+
+.steps__content-inside {
+  justify-items: center;
+  display: flex;
+  flex-direction: column;
+  max-width: 1140px;
+  padding: 50px 70px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.steps__title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  margin: 0;
+  margin-bottom: 18px;
+  max-width: 1140px;
+  background-image: url("../../../images/color1.png");
+  background-size:100% 100%;
+  color: #ffffff;
+  padding: 10px 0 15px 15px;
+}
+
+.steps__photo {
+  width: 200px;
+  height: 200px;
+  align-self: center;
+}
+
+.steps__photo1 {
+  width: 140px;
+  height: 140px;
+  align-self: center;
+}
+
+.steps__photo2 {
+  width: 200px;
+  height: 160px;
+  align-self: center;
+}
+
+@media screen and (max-width: 770px) {
+  .steps__title {
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 28px;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .steps__content-inside {
+    padding: 50px 50px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .steps__content-inside {
+    padding: 50px 25px;
+  }
+}
+
+.steps__main-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 26px;
+  margin: 0;
+  padding-bottom: 22px;
+}
+
+.steps__text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0;
+  padding-bottom: 30px;
+}
+
+.steps__column {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  min-width: 290px;
+}
+
+.steps__text-block {
+  display: grid;
+  flex-direction: row;
+  padding-top: 70px;
+  border-top: 1px solid rgb(221, 220, 220);;
+  justify-content: space-between;
+  gap: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-rows: auto;
+  justify-content: center;
+}
+
+@media screen and (max-width: 770px) {
+  .steps__title {
+    padding-bottom: 16px;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .steps__text {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 788px) {
+  .steps__text-block {
+    gap: 25px;
+    padding-top: 60px;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .steps__text-block {
+    flex-direction: column;
+    padding-top: 60px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .steps__text {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
