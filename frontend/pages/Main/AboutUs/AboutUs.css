@@ -1,0 +1,189 @@
+@import url(../../../vendor/fonts.css);
+
+.aboutUs__content {
+  justify-items: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 0px 70px 20px 70px;
+  max-width: 1140px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.aboutUs__title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 27px;
+  margin: 0;
+  padding-bottom: 23px;
+}
+
+.aboutUs__status-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 20px;
+  margin: 0;
+  padding-bottom: 26px;
+}
+
+.aboutUs__text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  margin: 0;
+  max-width: 600px;
+  padding-right: 49px;
+}
+
+.aboutUs__column {
+  display: flex;
+  flex-direction: column;
+  max-width: 750px;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.aboutUs__text-block {
+  display: flex;
+  flex-direction: row;
+  padding-top: 90px;
+  justify-content: space-between;
+}
+
+.aboutUs__photo {
+  width: 270px;
+  height: 327px;
+  border-radius: 10px;
+  padding-right: 30px;
+}
+
+.aboutUs__link {
+  text-decoration: none;
+  color: black;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.aboutUs__link:hover {
+  opacity: 0.5;
+  cursor: pointer;
+  transition: 1s;
+}
+
+@media screen and (max-width: 770px) {
+  .aboutUs__content {
+    padding: 0px 50px 20px 50px;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .aboutUs__photo {
+    width: 255px;
+    height: 307px;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .aboutUs__photo {
+    width: 255px;
+    height: 307px;
+    padding-right: 0;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .aboutUs__text {
+    font-size: 14px;
+    line-height: 22px;
+    max-width: 364px;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .aboutUs__text {
+    font-size: 14px;
+    line-height: 22px;
+    max-width: 364px;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .aboutUs__status-text {
+    font-size: 18px;
+    line-height: 22px;
+    padding-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .aboutUs__name-text {
+    font-size: 40px;
+    line-height: 40px;
+    padding-bottom: 16px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .aboutUs__text-block {
+    flex-direction: column-reverse;
+    padding-top: 60px;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .aboutUs__photo {
+    padding-bottom: 40px;
+    align-self: center;
+    width: 290px;
+    height: 330px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .aboutUs__content {
+    padding: 0px 14px 30px 14px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .aboutUs__text {
+    padding-right: 0;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .aboutUs__status-text {
+    font-size: 18px;
+    line-height: 22px;
+    padding-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .aboutUs__name-text {
+    font-size: 30px;
+    line-height: 36px;
+    padding-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .aboutUs__title {
+    padding-bottom: 28px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .aboutUs__link {
+    padding-top: 40px;
+  }
+}
