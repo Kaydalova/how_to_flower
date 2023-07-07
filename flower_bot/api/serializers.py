@@ -80,6 +80,7 @@ class ScheduleSerializer(serializers.ModelSerializer):
         model = Schedule
         fields = ('id',
                   'flower',
+                  'once_every_three_days',
                   'day',
                   'time',
                   'action',

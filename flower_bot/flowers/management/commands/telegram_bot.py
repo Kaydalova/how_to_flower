@@ -19,7 +19,11 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         """
-        Функция проверяет
+        Функция проверяет есть ли в базе уведомления,
+        которые нужно отправить сегодня
+        и планирует их отправку в указанное в записи время.
+        Если в уведомлении флаг once_every_three_days = True -  сдвигает
+        следующий день уведомления на 3.
         """
         def send_notification(bot, today_schedule):
             chat_id = today_schedule.flower.owner.chat_id
@@ -32,6 +36,7 @@ class Command(BaseCommand):
         def check_schedule():
             today = datetime.weekday(datetime.now())
             today_schedules = Schedule.objects.filter(day=today)
+
             secret_token = settings.TELEGRAM_TOKEN
             bot = Bot(token=secret_token)
 
@@ -39,5 +44,6 @@ class Command(BaseCommand):
                 schedule.every().day.at(
                     str(schedule_item.time)).do(
                         send_notification(bot, schedule_item))
-
+                if schedule_item.once_every_three_days:
+                    schedule_item.day = (schedule_item.day + 3) % 6
         schedule.every().day.at('00:01').do(check_schedule)

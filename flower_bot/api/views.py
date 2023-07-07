@@ -35,10 +35,14 @@ class UsersFlowerViewSet(viewsets.ModelViewSet):
 
 
 class ScheduleViewSet(viewsets.ModelViewSet):
+    """
+    Обрабатывает запросы только от авторизованного пользователя.
+    Методы list и retrive отдают только те расписания,
+    которые связаны с растениями юзера.
+    """
     serializer_class = ScheduleSerializer
     permission_classes = [IsAuthenticated]
     filter_backends = (DjangoFilterBackend,)
-    # pagination_class = None
     filterset_fields = ('flower',)
 
     def get_queryset(self):

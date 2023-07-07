@@ -34,6 +34,7 @@ class ScheduleAdmin(admin.ModelAdmin):
     list_display = (
         'id',
         'flower',
+        'once_every_three_days',
         'day',
         'time',
         'action'

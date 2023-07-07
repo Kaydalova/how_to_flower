@@ -6,6 +6,18 @@ from users.models import User
 
 
 class Flower(models.Model):
+    """
+    Модель для вида растения.
+    Attrs:
+    - name: Название растения
+    - type: Вид растения
+    - image: Фото растения
+    - temperature: Рекомендуемая температура для содержания
+    - light: Рекомендуемая освещенность
+    - watering: Режим полива
+    - pet_friendly: Безопасен ил для животных
+    - pot: Рекомендации по горшку
+    """
     name = models.CharField(
         verbose_name='Название растения',
         unique=True,
@@ -44,6 +56,16 @@ class Flower(models.Model):
 
 
 class UsersFlower(models.Model):
+    """
+    Модель для растения пользователя.
+    Attrs:
+    - flower_type: Вид растения, foreign key
+    - name: Имя растения
+    - owner: Владелец растения
+    - image: Фото растения(необязательно поле)
+    - notification: Булево поле, включены ли уведомления
+    """
+
     flower_type = models.ForeignKey(
         Flower,
         on_delete=models.CASCADE,
@@ -58,7 +80,7 @@ class UsersFlower(models.Model):
     image = models.ImageField(
         upload_to='flowers/images/',
         null=True,
-        default=None,
+        blank=True,
         verbose_name='Фотография цветочка')
     notification = models.BooleanField(
         verbose_name='Оповещения в телеграм',
@@ -73,11 +95,25 @@ class UsersFlower(models.Model):
 
 
 class Schedule(models.Model):
+    """
+    Модель для расписания и отправки уведомлений пользователю.
+    Attrs:
+    - flower: цветок, для которого создано расписание
+    - once_every_three_days: булево поле.
+    True - если пользователь выбрал ухаживать за цветком раз в три дня,
+    значение поля day после каждого уведомления будет меняться с шагом в 3 дня.
+    - day: День недели, в который будет приходить уведомление
+    - time: Время уведомления
+    - action: Что нужно сделать пользователю:
+    1 - полить, 0 - побрызгать, 2 - подкормить
+    """
     flower = models.ForeignKey(
         UsersFlower,
         on_delete=models.CASCADE,
         verbose_name='Цветочек',
         related_name='schedules')
+    once_every_three_days = models.BooleanField(
+        default=False)
     day = models.SmallIntegerField(
         verbose_name='День недели от 0 до 6')
     time = models.TimeField(
